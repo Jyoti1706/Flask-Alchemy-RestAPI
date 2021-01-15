@@ -6,9 +6,10 @@ from flask_jwt import JWT
 from security import authenticate, identity
 from resources.user import UserRegister
 from db import db
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///data.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False  # to stop tracking sql alchemy.
 app.secret_key = 'Secretiskey'
 api = Api(app)
