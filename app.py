@@ -13,6 +13,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False  # to stop tracking sql alch
 app.secret_key = 'Secretiskey'
 api = Api(app)
 
+db.init_app(app)
+
 
 @app.before_first_request  # this will create all the table in data.db
 def create_tables():
